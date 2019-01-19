@@ -34,6 +34,7 @@ jokeSchema.statics.getPage = function (params) {
         if (numPages >= 1) numPages = total % perPage !== 0 ? parseInt(numPages) + 1 : numPages
         else numPages = 1
         page = page > numPages ? numPages: page
+        page = page < 1 ? 1: page
 
         let query = {
             limit: perPage,
@@ -48,7 +49,8 @@ jokeSchema.statics.getPage = function (params) {
         return {
             jokes: jokes,
             total: total,
-            numPages: numPages
+            numPages: numPages,
+            page: page
         }
     })
 }

@@ -19,6 +19,13 @@ class jokesClient {
         return fetch(url)
         .then(res => res.json())
     }
+
+    getJokes (params) {
+        let url = `${this.endpoint}/?${this.getParams(params)}`
+
+        return fetch(url)
+        .then(res => res.json())
+    }
 }
 
 export default jokesClient

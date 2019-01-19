@@ -1,7 +1,14 @@
-export default (state = {randomJoke: null}, action) => {
+const initialState = {
+    randomJoke: null,
+    jokesView: null
+}
+
+export default (state = initialState, action) => {
     switch (action.type) {
         case "RANDOM_JOKE":
-            return JSON.parse(JSON.stringify({randomJoke: action.payload}))
+            return { ...state, randomJoke: action.payload }
+        case "JOKES":
+            return { ...state, jokesView: action.payload }
         default:
             return state
     }

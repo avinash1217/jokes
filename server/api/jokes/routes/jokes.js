@@ -48,8 +48,8 @@ module.exports = ({ get, insert, update, remove }) => {
                 filter: req.query.filter || ''
             }
 
-            get(params).then(({numPages, total, jokes}) => {
-                res.status(200).json({numPages: numPages, total: total, jokes: jokes})
+            get(params).then(response => {
+                res.status(200).json(response)
             })
             .catch(err => res.status(500).json({message: err}))
         })

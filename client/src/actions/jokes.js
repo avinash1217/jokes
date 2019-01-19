@@ -10,3 +10,13 @@ export const getRandomJoke = () => dispatch => {
     })
     .catch(err => console.log("Could not get random joke!"))
 }
+
+export const getJokes = (params) => dispatch => {
+    api.getJokes(params).then(jokes => {
+        dispatch({
+            type: 'JOKES',
+            payload: jokes
+        })
+    })
+    .catch(err => console.log("Could not get jokes!"))
+}
