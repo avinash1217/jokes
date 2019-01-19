@@ -5,7 +5,13 @@ const Category = require('./models/category')
 db.init(Joke) //import initial jokes
 
 const jokesRouter = require('./routes/jokes')({
-    get: (id) => Joke.findById(id).populate('category'),
+    get: (params) => {
+        if (params.id)
+            return Joke.findById(params.id)
+            .populate('category')
+        else //paginate jokes
+            return Joke.getPage(params)
+    },
     insert: (payload) => Joke.create(payload),
     update: (id, payload) => {
         return Joke.findById(id)

@@ -7,7 +7,7 @@ module.exports = ({ get, insert, update, remove }) => {
      */
     router
         .get('/:id', (req, res) => {
-            get(req.params.id)
+            get({id: req.params.id})
             .then(joke => {
                 if (joke)  res.status(200).json(joke)
                 else res.status(404).json({message: "No joke found"})
@@ -27,7 +27,26 @@ module.exports = ({ get, insert, update, remove }) => {
         .post('/', (req, res) => {
             insert(req.body.joke)
             .then(insertedJoke => res.status(200).json(insertedJoke))
-            .catch(err => res.status(500).json({message: "Bad request!"}))
+            .catch(err => res.status(500).json({message: err}))
+        })
+
+    /**
+     * Jokes filtering
+     */
+    router
+        .get('/', (req, res) => {
+            let params = {
+                page: req.query.page || 1, //default pagination
+                sortBy: req.query.sortBy || 'created_at',
+                sort: req.query.sort || 'DESC',
+                filterBy: req.query.filterBy || 'content',
+                filter: req.query.filter || ''
+            }
+
+            get(params).then(({numPages, total, jokes}) => {
+                res.status(200).json({numPages: numPages, total: total, jokes: jokes})
+            })
+            .catch(err => res.status(500).json({message: err}))
         })
 
     return router
