@@ -53,6 +53,17 @@ jokeSchema.statics.getPage = function (params) {
     })
 }
 
+/**
+ * Random Joke
+ */
+jokeSchema.statics.getRandom = function () {
+    return this.countDocuments({}).then(count => {
+        let random = Math.floor(Math.random() * count)
+        return this.findOne().skip(random).exec()
+    })
+}
+
+
 const Joke = mongoose.model('Joke', jokeSchema)
 
 module.exports = Joke

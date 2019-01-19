@@ -9,6 +9,8 @@ const jokesRouter = require('./routes/jokes')({
         if (params.id)
             return Joke.findById(params.id)
             .populate('category')
+        else if (params.random)
+            return Joke.getRandom()
         else //paginate jokes
             return Joke.getPage(params)
     },

@@ -3,12 +3,14 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const port = require('./config').server.port || 8080
+const cors = require('cors')
 
 const {
     jokesRouter,
     categoriesRouter
 } = require('./api/jokes')
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use('/api/jokes', jokesRouter)
 

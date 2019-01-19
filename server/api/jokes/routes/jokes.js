@@ -6,6 +6,11 @@ module.exports = ({ get, insert, update, remove }) => {
      * CRUD on a joke
      */
     router
+        .get('/random', (req, res, next) => {
+            get({random: true})
+            .then(joke => res.status(200).json(joke))
+            .catch(err => res.status(500).json({message: "Bad request!"}))
+        })
         .get('/:id', (req, res) => {
             get({id: req.params.id})
             .then(joke => {
