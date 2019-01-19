@@ -2,6 +2,7 @@
 const db = require('./../../core/db')
 const Joke = require('./models/joke')
 const Category = require('./models/category')
+db.init(Joke) //import initial jokes
 
 const jokesRouter = require('./routes/jokes')({
     get: (id) => Joke.findById(id).populate('category'),
