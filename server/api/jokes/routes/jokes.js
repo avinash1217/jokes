@@ -27,7 +27,7 @@ module.exports = ({ get, insert, update, remove }) => {
         .post('/', (req, res) => {
             insert(req.body.joke)
             .then(insertedJoke => res.status(200).json(insertedJoke))
-            .catch(err => res.status(500).json({message: err}))
+            .catch(err => res.status(500).json({message: "Bad request!"}))
         })
 
     /**

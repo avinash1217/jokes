@@ -1,6 +1,14 @@
 const mongoose = require('mongoose')
 const categorySchema = new mongoose.Schema({
-    title: String,
+    title: {
+        type: String,
+        required: true,
+        validate: {
+            validator: function (v) {
+              return v !== undefined && v !== ""
+            }
+        }
+    },
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now }
 })
