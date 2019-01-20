@@ -21,7 +21,7 @@ class JokesTable extends Component {
     constructor(props){
         super(props)
         this.state = {
-            sortBy: 'content',
+            sortBy: 'created_at',
             sortDir: 1
         }
         this.getpage = this.getPage.bind(this)
