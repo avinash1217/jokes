@@ -9,6 +9,6 @@ By default config the server should be up and running at: http://localhost:8888
 To run the unit tests `npm test`.
 
 ## Joke API Client interface
-Navigate to client and run `npm install` followed by `yarn start`.
+Navigate to client and run `npm install` followed by `npm start`.
 Launch your browser at: http://localhost:3000
 
