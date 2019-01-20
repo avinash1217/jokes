@@ -41,7 +41,7 @@ jokeSchema.statics.getPage = function (params) {
             skip: (page-1)*perPage,
             sort: {}
         }
-        query.sort[params.sortBy] = params.sort === "ASC" ? -1 : 1
+        query.sort[params.sortBy] = params.sort === "ASC" ? 1 : -1
 
         return this.find(filter, null, query)
     })
