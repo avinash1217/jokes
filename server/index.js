@@ -3,8 +3,11 @@ const fs = require("fs");
 const debug = require("debug")("jokes:index.js");
 const mongoose = require("mongoose");
 const MongoMemoryDb = require("mongodb-memory-server").MongoMemoryServer;
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
+
 const parse = require("csv-parse");
 
 const mongoServer = new MongoMemoryDb();

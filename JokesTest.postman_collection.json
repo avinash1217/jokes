@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "a744e26d-64e4-43c7-ae86-874a175a2987",
+		"name": "JokesTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post new joke",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3050/jokes?joke=testJoke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"jokes"
+					],
+					"query": [
+						{
+							"key": "joke",
+							"value": "testJoke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all jokes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3050/jokes/alljokes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"jokes",
+						"alljokes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a joke",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3050/jokes?id=5c56ed9c1805900ad43dcb4d&newJoke=newJoke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"jokes"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5c56ed9c1805900ad43dcb4d"
+						},
+						{
+							"key": "newJoke",
+							"value": "newJoke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a joke",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3050/jokes?joke=newJoke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"jokes"
+					],
+					"query": [
+						{
+							"key": "joke",
+							"value": "newJoke"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a joke",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3050/jokes?id=5c56ee782bdb2357b827d11b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"jokes"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5c56ee782bdb2357b827d11b"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
