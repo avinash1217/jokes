@@ -17,6 +17,9 @@ The app provides REST endpoints to manage jokes. A pre-registered Admin has to s
  - this will create default database and a collection named "users" in mongodb
  - it will also create an Admin (named "Mohit") with default credentials
 
+## Steps to unit test the app
+ - npm run test
+
 ## Steps to run the service
  - npm install
  - npm run start
