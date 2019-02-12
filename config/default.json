@@ -1,0 +1,8 @@
+{
+    "logLevel": "debug",
+    "dbName": "healthera",
+    "dbServer": "127.0.0.1:8000",
+    "jwtSecret": "dfdfdf83hu282-we2",
+    "appHost": "localhost:3000",
+    "autoCreateCollection": true
+}

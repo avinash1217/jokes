@@ -1,4 +1,20 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
 node_modules
+
+# testing
+/coverage
+/.nyc_output
+
+# production
+/build
+/bin
+
+# OS
+.DS_Store
+
+.vscode
 .git
 npm-debug.log
 .~lock.jokes.csv#
