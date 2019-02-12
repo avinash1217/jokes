@@ -7,9 +7,15 @@ The app provides REST endpoints to manage jokes. A pre-registered Admin has to s
  - npm version >= 5.6
  - mongodb version >= 4.0
  - Ensure mongo db service is up and running
- - execute init.sh script from root directory
- - this will create default database and a collection named "Users" in mongodb
- - it will also create an Admin with default credentials
+ - ensure path to mongo and mongod executables are set in environment
+ - open a command prompt
+ - execute the command "mongo"
+ - mongo prompt begins
+ - execute the command "use healthera"
+ - execute the command 'db.users.insert({firstName: "Mohit", lastName: "Sorde", emailId: "mohit@mohit.com", password: "test1234"})'
+ - execute the command 'show dbs'
+ - this will create default database and a collection named "users" in mongodb
+ - it will also create an Admin (named "Mohit") with default credentials
 
 ## Steps to run the service
  - npm install
