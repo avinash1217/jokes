@@ -10,7 +10,7 @@ const ROUTES = constants.ROUTES
  * sets up express routes for server
  * @param {Express} app - node js express app
  */
-function setUpRoutes (app) {
+const setUpRoutes = (app) => {
   app.route(ROUTES.LOGIN)
     .post(authenticationController.loginUser)
 
@@ -19,7 +19,7 @@ function setUpRoutes (app) {
 
   app.route(ROUTES.JOKE)
     .post(jokeController.createJoke)
-    .get(jokeController.getAllJokes)
+    .get(jokeController.getFilteredJokes)
 
   app.route(`${ROUTES.JOKE}/:id`)
     .put(jokeController.udateJokeById)
