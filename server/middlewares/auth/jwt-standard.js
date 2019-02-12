@@ -33,7 +33,7 @@ const verifyJWT = (token, options = {}) => {
 }
 
 const authorizationMiddleware = (req, res, next) => {
-  const token = req.cookies(HEALTHERA_COOKIE_NAME)
+  const token = req.cookies[HEALTHERA_COOKIE_NAME]
   if (!token) {
     logger.warn('session token missing from cookie ...')
     return res.status(401).send({ errCode: errCodes.UNAUTHORIZED })
@@ -41,6 +41,7 @@ const authorizationMiddleware = (req, res, next) => {
   try {
     const payload = verifyJWT(token)
     req.jwtPayload = payload
+    logger.info(`current logged in user has the id => ${payload.id}`)
     return next()
   } catch (e) {
     logger.warn('invalid token to authorize user ...', e.message)

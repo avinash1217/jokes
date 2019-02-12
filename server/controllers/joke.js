@@ -22,7 +22,9 @@ function getFilteredJokes (req, res) {
  * @param {Express.Response} res
  */
 function createJoke (req, res) {
-  jokeService.createJoke(req.body).then((jokeId) => {}).catch((err) => {
+  jokeService.createJoke(req.body).then((jokeId) => {
+    res.send('200 OK!')
+  }).catch((err) => {
     res.status(400).send(err.data)
   })
 }
@@ -35,7 +37,7 @@ function createJoke (req, res) {
 function udateJokeById (req, res) {
   jokeService.updateJokes({
     filter: {
-      'id': req.params.id
+      '_id': req.params.id
     },
     data: req.body
   }).then((jokes) => {
@@ -52,7 +54,7 @@ function udateJokeById (req, res) {
  */
 function getJokeById (req, res) {
   jokeService.fetchFilteredJokes({
-    'id': req.params.id
+    '_id': req.params.id
   }).then((jokes) => {
     return res.send(jokes && jokes[0])
   }).catch((err) => {
@@ -67,7 +69,7 @@ function getJokeById (req, res) {
  */
 function deleteJokeById (req, res) {
   jokeService.deleteJoke({
-    'id': req.params.id
+    '_id': req.params.id
   }).then((jokes) => {
     return res.send('200 OK!')
   }).catch((err) => {

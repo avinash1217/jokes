@@ -70,7 +70,7 @@ function fetchAll () {
 function update (payload) {
   return new Promise((resolve, reject) => {
     // TODO - since validators, setters and getters middlewares are skipped, switch to findOneAndUpdate for each matched item in the future
-    JokeModel.update(payload.filter, payload.data, (err, jokes) => {
+    JokeModel.updateMany(payload.filter, payload.data, (err, jokes) => {
       if (err) {
         logger.error(`error while updating jokes => ${err}`)
         return reject(new Error({

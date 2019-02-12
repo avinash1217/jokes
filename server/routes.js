@@ -22,7 +22,7 @@ const setUpRoutes = (app) => {
     .get(jokeController.getFilteredJokes)
 
   app.route(`${ROUTES.JOKE}/:id`)
-    .put(jokeController.udateJokeById)
+    .patch(jokeController.udateJokeById)
     .get(jokeController.getJokeById)
     .delete(jokeController.deleteJokeById)
 }
