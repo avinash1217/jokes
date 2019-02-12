@@ -5,10 +5,10 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 
-const utils = require('./common-utils')
-const setUpClientRoutes = require('./client/routes')
-const setUpServerRoutes = require('./server/routes')
-const setUpServerMiddlewares = require('./server/middlewares')
+const utils = require('./src/common-utils')
+const setUpClientRoutes = require('./src/client/routes')
+const setUpServerRoutes = require('./src/server/routes')
+const setUpServerMiddlewares = require('./src/server/middlewares')
 
 const logger = utils.logger
 const port = process.env.PORT || 3000

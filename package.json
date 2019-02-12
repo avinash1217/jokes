@@ -12,10 +12,10 @@
     ]
   },
   "scripts": {
-    "start": "npm run test && node app/index.js",
+    "start": "npm run test && node index.js",
     "test": "npm run test-code-standard && npm run test-unit",
     "test-code-standard": "standard --env mocha",
-    "test-unit": "nyc --all --reporter=html --reporter=text mocha --require co-mocha \"server/**/*.spec.js\""
+    "test-unit": "nyc --all --reporter=html --reporter=text mocha --require co-mocha \"src/**/*.spec.js\""
   },
   "author": "",
   "license": "ISC",
