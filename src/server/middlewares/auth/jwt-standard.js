@@ -59,7 +59,7 @@ const setSession = (res, payload) => {
 
 const allVerbs = express.Router().use(authorizationMiddleware)
 
-export default {
+export const jwtStandardAuthMiddleware = {
   middlewareRouter: [ // Add routes here for making them accessible only for loggedin user.
     { mountOn: ROUTE_PATHS.LOGOUT, middleware: allVerbs },
     { mountOn: ROUTE_PATHS.JOKE, middleware: allVerbs }

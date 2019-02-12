@@ -18,7 +18,6 @@ const fetchOne = (payload) => {
     UserModel.findOne({
       [USER_ATTRIBUTES.emailId]: payload.userId
     }, (err, res) => {
-      console.log(`+++++++++++++++ ${JSON.stringify(payload)}`)
       if (err) {
         logger.error(`error while fetching user by id => ${err}`)
         return reject(new Error({

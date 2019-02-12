@@ -1,10 +1,10 @@
 'use strict'
 
-import { middlewareRouter as jwtStandardAuthMiddleware } from './auth/jwt-standard'
+import { jwtStandardAuthMiddleware } from './auth/jwt-standard'
 
 const allMiddlewares = []
 
-Array.prototype.push.apply(allMiddlewares, jwtStandardAuthMiddleware)
+Array.prototype.push.apply(allMiddlewares, jwtStandardAuthMiddleware.middlewareRouter)
 
 /**
  * sets up express routes for client application
