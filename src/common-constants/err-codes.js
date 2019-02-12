@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export const errCodes = {
   INPUT_ATTR_MISSING: 'E001', // different error codes to inform client of different types of user error
   INPUT_ATTR_UNDEFINED: 'E002',
   INPUT_ATTR_INVALID: 'E003',

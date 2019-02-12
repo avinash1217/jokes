@@ -1,5 +1,3 @@
 'use strict'
 
-module.exports = {
-  logger: require('./logger')
-}
+export * from './logger'

@@ -2,20 +2,20 @@
  * TODO - write description
  */
 'use strict'
-const logger = require('../../../common-utils').logger
+import { logger } from '../../../common-utils'
 
 /**
  * returns a promise without implementing anything
  * @param {*} payload
  */
-function mutedBody (payload) {
+const mutedBody = (payload) => {
   return new Promise((resolve, reject) => {
     logger.error('DAO Implementation not found')
     resolve()
   })
 }
 
-module.exports = {
+export const GenericDaoInterface = {
   create: mutedBody,
   update: mutedBody,
   fetchOne: mutedBody,

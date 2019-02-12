@@ -1,8 +1,8 @@
 'use strict'
 
-const mongoose = require('mongoose')
-const env = require('tiny-config')
-const utils = require('../../../common-utils')
+import mongoose from 'mongoose'
+import * as env from 'tiny-config'
+import * as utils from '../../../common-utils'
 
 const logger = utils.logger
 
@@ -32,4 +32,4 @@ process.on('SIGINT', () => {
   })
 })
 
-module.exports = mongoose
+export default mongoose

@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export const ROUTES = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   JOKE: '/joke'

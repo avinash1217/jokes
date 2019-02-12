@@ -1,14 +1,11 @@
 'use strict'
-const JokeDao = require('../dao/mongo-db').JokeDao
-// const JOKE_ATTRIBUTES = require('../constants').JOKE_ATTRIBUTES
-// const errCodes = require('../../common-constants').errCodes
-// const logger = require('../../common-utils').logger
+import { JokeDao } from '../dao/mongo-db'
 
 /**
  * returns a promise that resolves to new joke id on success
  * @param {object} payload - attributes as defined in the joke schema
  */
-function createJoke (payload) {
+export const createJoke = (payload) => {
   return JokeDao.create(payload)
 }
 
@@ -25,7 +22,7 @@ const prepareQueryPayload = (payload) => {
  * returns a promise that resolves to new joke id on success
  * @param {object} payload - attributes as defined in the joke schema and their filtering options
  */
-function fetchFilteredJokes (payload) {
+export const fetchFilteredJokes = (payload) => {
   // TODO - handle paginated results
   if (!payload || !Object.keys(payload).length) { return JokeDao.fetchAll() }
   return JokeDao.fetchByParams(prepareQueryPayload(payload))
@@ -35,7 +32,7 @@ function fetchFilteredJokes (payload) {
  * returns a promise that resolves to true if item is found and removed
  * @param {object} payload - attributes an as defined in the joke schema and their values
  */
-function deleteJoke (payload) {
+export const deleteJoke = (payload) => {
   return JokeDao.remove(payload)
 }
 
@@ -45,13 +42,6 @@ function deleteJoke (payload) {
  * @param {object} payload.filter - select the objects to be updated
  * @param {object} payload.data - data to update in the selected objects
  */
-function updateJokes (payload) {
+export const updateJokes = (payload) => {
   return JokeDao.update(payload)
-}
-
-module.exports = {
-  createJoke,
-  fetchFilteredJokes,
-  deleteJoke,
-  updateJokes
 }

@@ -1,8 +1,8 @@
 'use strict'
 
-const constants = require('./constants')
-const authenticationController = require('./controllers/authentication')
-const jokeController = require('./controllers/joke')
+import * as constants from './constants'
+import * as authenticationController from './controllers/authentication'
+import * as jokeController from './controllers/joke'
 
 const ROUTES = constants.ROUTES
 
@@ -10,7 +10,7 @@ const ROUTES = constants.ROUTES
  * sets up express routes for server
  * @param {Express} app - node js express app
  */
-const setUpRoutes = (app) => {
+export const setUpServerRoutes = (app) => {
   app.route(ROUTES.LOGIN)
     .post(authenticationController.loginUser)
 
@@ -26,5 +26,3 @@ const setUpRoutes = (app) => {
     .get(jokeController.getJokeById)
     .delete(jokeController.deleteJokeById)
 }
-
-module.exports = setUpRoutes

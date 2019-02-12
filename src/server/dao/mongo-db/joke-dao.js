@@ -1,18 +1,17 @@
 'use strict'
 
-const GenericDaoInterface = require('../interfaces/genric-dao-interface')
-const JokeModel = require('../../db-models/mongo-db').JokeModel
-// const JOKE_ATTRIBUTES = require('../../constants').JOKE_ATTRIBUTES
-const logger = require('../../../common-utils').logger
-const errCodes = require('../../../common-constants').errCodes
+import { GenericDaoInterface } from '../interfaces/genric-dao-interface'
+import { JokeModel } from '../../db-models/mongo-db'
+import { logger } from '../../../common-utils'
+import { errCodes } from '../../../common-constants'
 
-let JokeDao = Object.create(GenericDaoInterface)
+export let JokeDao = Object.create(GenericDaoInterface)
 
 /**
  * returns a promise that resolves to document id when saved
  * @param {object} payload - attributes as defined in the joke schema
  */
-function create (payload) {
+const create = (payload) => {
   return new Promise((resolve, reject) => {
     JokeModel.create(payload, (err, joke) => {
       if (err) {
@@ -30,7 +29,7 @@ function create (payload) {
  * returns a promise that resolves to list of all filtered jokes
  * @param {object} payload - attributes an as defined in the joke schema and their values
  */
-function fetchByParams (payload) {
+const fetchByParams = (payload) => {
   return new Promise((resolve, reject) => {
     JokeModel.find(payload, (err, jokes) => {
       if (err) {
@@ -47,7 +46,7 @@ function fetchByParams (payload) {
 /**
  * returns a promise that resolves to list of all filtered jokes
  */
-function fetchAll () {
+const fetchAll = () => {
   return new Promise((resolve, reject) => {
     JokeModel.find({}, (err, jokes) => {
       if (err) {
@@ -67,7 +66,7 @@ function fetchAll () {
  * @param {object} payload.filter - select the objects to be updated
  * @param {object} payload.data - data to update in the selected objects
  */
-function update (payload) {
+const update = (payload) => {
   return new Promise((resolve, reject) => {
     // TODO - since validators, setters and getters middlewares are skipped, switch to findOneAndUpdate for each matched item in the future
     JokeModel.updateMany(payload.filter, payload.data, (err, jokes) => {
@@ -86,7 +85,7 @@ function update (payload) {
  * returns a promise that resolves to true if item is found and removed
  * @param {object} payload - attributes an as defined in the joke schema and their values
  */
-function remove (payload) {
+const remove = (payload) => {
   return new Promise((resolve, reject) => {
     JokeModel.deleteOne(payload, (err) => {
       if (err) {
@@ -107,5 +106,3 @@ JokeDao = Object.assign(JokeDao, {
   update,
   remove
 })
-
-module.exports = JokeDao

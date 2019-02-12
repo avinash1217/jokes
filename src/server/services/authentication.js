@@ -1,8 +1,8 @@
 'use strict'
-const UserDao = require('../dao/mongo-db').UserDao
-const USER_ATTRIBUTES = require('../constants').USER_ATTRIBUTES
-const errCodes = require('../../common-constants').errCodes
-const logger = require('../../common-utils').logger
+import { UserDao } from '../dao/mongo-db'
+import { USER_ATTRIBUTES } from '../constants'
+import { errCodes } from '../../common-constants'
+import { logger } from '../../common-utils'
 
 /**
  * returns a promise that resolves to user id on success
@@ -10,7 +10,7 @@ const logger = require('../../common-utils').logger
  * @param {string} payload.userId
  * @param {string} payload.password
  */
-function loginUser (payload) {
+export const loginUser = (payload) => {
   return UserDao.fetchOne(payload).then((userIntance) => {
     // TODO - ensure to use a hashing mechanism for password
     // TODO - ensure the password passed through communication channels is encrypted
@@ -22,8 +22,4 @@ function loginUser (payload) {
     }
     return userIntance.id
   })
-}
-
-module.exports = {
-  loginUser
 }

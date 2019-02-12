@@ -1,7 +1,7 @@
 'use strict'
 
-const env = require('tiny-config')
-const winston = require('winston')
+import * as env from 'tiny-config'
+import * as winston from 'winston'
 
 const logLevel = env.get('logLevel')
 
@@ -21,7 +21,7 @@ const consoleTransport = new (winston.transports.Console)({
 })
 
 // Creating logger
-const logger = new (winston.Logger)({
+export const logger = new (winston.Logger)({
   level: logLevel,
   transports: [
     consoleTransport
@@ -29,5 +29,3 @@ const logger = new (winston.Logger)({
 
   exitOnError: false
 })
-
-module.exports = logger

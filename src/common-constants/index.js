@@ -1,5 +1,1 @@
-'use strict'
-
-module.exports = {
-  errCodes: require('./err-codes')
-}
+export * from './err-codes'

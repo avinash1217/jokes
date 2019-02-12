@@ -1,12 +1,12 @@
 'use strict'
 
-const jsonwebtoken = require('jsonwebtoken')
-const express = require('express')
-const env = require('tiny-config')
+import jsonwebtoken from 'jsonwebtoken'
+import express from 'express'
+import * as env from 'tiny-config'
 
-const errCodes = require('../../../common-constants').errCodes
-const ROUTE_PATHS = require('../../constants').ROUTES
-const logger = require('../../../common-utils').logger
+import { errCodes } from '../../../common-constants'
+import { ROUTES as ROUTE_PATHS } from '../../constants'
+import { logger } from '../../../common-utils'
 
 const jwtSecret = env.get('jwtSecret')
 
@@ -59,7 +59,7 @@ const setSession = (res, payload) => {
 
 const allVerbs = express.Router().use(authorizationMiddleware)
 
-module.exports = {
+export default {
   middlewareRouter: [ // Add routes here for making them accessible only for loggedin user.
     { mountOn: ROUTE_PATHS.LOGOUT, middleware: allVerbs },
     { mountOn: ROUTE_PATHS.JOKE, middleware: allVerbs }

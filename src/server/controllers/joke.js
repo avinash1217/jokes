@@ -1,12 +1,12 @@
 'use strict'
-const jokeService = require('../services/joke')
+import * as jokeService from '../services/joke'
 
 /**
  * controller to get all jokes
  * @param {Express.Request} req
  * @param {Express.Response} res
  */
-function getFilteredJokes (req, res) {
+export const getFilteredJokes = (req, res) => {
   // if no query params are passed, then all jokes are fetched
   // else jokes filtered by these params are fetched
   return jokeService.fetchFilteredJokes(req.query).then((allJokes) => {
@@ -21,7 +21,7 @@ function getFilteredJokes (req, res) {
  * @param {Express.Request} req
  * @param {Express.Response} res
  */
-function createJoke (req, res) {
+export const createJoke = (req, res) => {
   jokeService.createJoke(req.body).then((jokeId) => {
     res.send('200 OK!')
   }).catch((err) => {
@@ -34,7 +34,7 @@ function createJoke (req, res) {
  * @param {Express.Request} req
  * @param {Express.Response} res
  */
-function udateJokeById (req, res) {
+export const udateJokeById = (req, res) => {
   jokeService.updateJokes({
     filter: {
       '_id': req.params.id
@@ -52,7 +52,7 @@ function udateJokeById (req, res) {
  * @param {Express.Request} req
  * @param {Express.Response} res
  */
-function getJokeById (req, res) {
+export const getJokeById = (req, res) => {
   jokeService.fetchFilteredJokes({
     '_id': req.params.id
   }).then((jokes) => {
@@ -67,7 +67,7 @@ function getJokeById (req, res) {
  * @param {Express.Request} req
  * @param {Express.Response} res
  */
-function deleteJokeById (req, res) {
+export const deleteJokeById = (req, res) => {
   jokeService.deleteJoke({
     '_id': req.params.id
   }).then((jokes) => {
@@ -75,12 +75,4 @@ function deleteJokeById (req, res) {
   }).catch((err) => {
     return res.status(400).send(err.data)
   })
-}
-
-module.exports = {
-  getFilteredJokes,
-  createJoke,
-  udateJokeById,
-  getJokeById,
-  deleteJokeById
 }

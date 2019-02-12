@@ -1,14 +1,14 @@
 'use strict'
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const cookieParser = require('cookie-parser')
+import express from 'express'
+import bodyParser from 'body-parser'
+import morgan from 'morgan'
+import cookieParser from 'cookie-parser'
 
-const utils = require('./src/common-utils')
-const setUpClientRoutes = require('./src/client/routes')
-const setUpServerRoutes = require('./src/server/routes')
-const setUpServerMiddlewares = require('./src/server/middlewares')
+import * as utils from './src/common-utils'
+import { setUpClientRoutes } from './src/client/routes'
+import { setUpServerRoutes } from './src/server/routes'
+import { setUpExpressMiddlewares } from './src/server/middlewares'
 
 const logger = utils.logger
 const port = process.env.PORT || 3000
@@ -22,18 +22,18 @@ app.enable('trust proxy')
 app.use(cookieParser())
 app.use(morgan('short', {
   // Excluding logs for healthCheck which clutters the log with high freq periodic calls.
-  skip: function (req, res) { return req.originalUrl === '/status' || req.originalUrl === '/' }
+  skip: (req, res) => { return req.originalUrl === '/status' || req.originalUrl === '/' }
 }))
 app.use(bodyParser.json({ limit: '50mb' })) // TODO - move to config
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }))
 
 // set up application routes
 setUpClientRoutes(app)
-setUpServerMiddlewares(app)
+setUpExpressMiddlewares(app)
 setUpServerRoutes(app)
 
 // catch 404 and forwarding to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   var err = new Error('Not Found')
   err.status = 404
   next(err)

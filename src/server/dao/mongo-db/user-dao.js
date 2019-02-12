@@ -1,23 +1,24 @@
 'use strict'
 
-const GenericDaoInterface = require('../interfaces/genric-dao-interface')
-const UserModel = require('../../db-models/mongo-db').UserModel
-const USER_ATTRIBUTES = require('../../constants').USER_ATTRIBUTES
-const logger = require('../../../common-utils').logger
-const errCodes = require('../../../common-constants').errCodes
+import { GenericDaoInterface } from '../interfaces/genric-dao-interface'
+import { UserModel } from '../../db-models/mongo-db'
+import { logger } from '../../../common-utils'
+import { errCodes } from '../../../common-constants'
+import { USER_ATTRIBUTES } from '../../constants'
 
-let UserDao = Object.create(GenericDaoInterface)
+export let UserDao = Object.create(GenericDaoInterface)
 
 /**
  * returns a promise that resolves to fetched user model instance
  * @param {object} payload
  * @param {string} payload.userId
  */
-function fetchOne (payload) {
+const fetchOne = (payload) => {
   return new Promise((resolve, reject) => {
     UserModel.findOne({
       [USER_ATTRIBUTES.emailId]: payload.userId
     }, (err, res) => {
+      console.log(`+++++++++++++++ ${JSON.stringify(payload)}`)
       if (err) {
         logger.error(`error while fetching user by id => ${err}`)
         return reject(new Error({
@@ -37,5 +38,3 @@ function fetchOne (payload) {
 UserDao = Object.assign(UserDao, {
   fetchOne
 })
-
-module.exports = UserDao

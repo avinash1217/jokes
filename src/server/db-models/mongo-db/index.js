@@ -1,9 +1,9 @@
 'use strict'
 
-const mongoose = require('../../db-connector/mongo-db')
-const schemas = require('../../db-schemas/mongo-db')
+import mongoose from '../../db-connector/mongo-db'
+import * as schemas from '../../db-schemas/mongo-db'
 
-module.exports = {
+export default {
   UserModel: mongoose.model('User', schemas.UserSchema),
   JokeModel: mongoose.model('Joke', schemas.JokeSchema)
 }
