@@ -1,0 +1,59 @@
+-->Install postgreSQL database software and create a role 'cloud'
+
+-->Create a database with name "healtheradb" with owner 'cloud'
+
+-->create tables as per the script below
+
+
+CREATE TABLE "Jokes"
+
+(
+  
+id serial NOT NULL,
+  
+"jokesCategory" character varying(255) NOT NULL,
+  
+description text NOT NULL,
+  
+"createdAt" date,
+  
+"updatedAt" date,
+  
+CONSTRAINT "Jokes_pkey" PRIMARY KEY (id),
+
+CONSTRAINT "Description_name_key" UNIQUE (description)
+
+)
+
+WITH (
+  
+OIDS=FALSE
+);
+
+ALTER TABLE "Jokes"
+  OWNER TO cloud;
+
+
+-------------------------------------------------------------------------------
+
+CREATE TABLE public."JokesCategories"
+(
+  id serial NOT NULL,
+  "category" character varying(255) NOT NULL,
+  "createdAt" date,
+  
+  "updatedAt" date,
+  
+  CONSTRAINT "JokesCategories_pkey" PRIMARY KEY (id),
+  CONSTRAINT "JokesCategories_name_key" UNIQUE (category)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public."JokesCategories"
+  OWNER TO cloud;
+------------------------------------------------------------------------------
+
+-->Manually insert all the categories on "JokesCategories" table after creating the table on the database like below
+
+  insert into "JokesCategories" values ('5', 'STANDING', '02/07/2019','02/07/2019');
